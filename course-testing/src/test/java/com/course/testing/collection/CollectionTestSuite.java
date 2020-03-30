@@ -30,8 +30,7 @@ public class CollectionTestSuite {
         ArrayList<Integer> numbers = new ArrayList<Integer>();
         OddNumbersExterminator ext = new OddNumbersExterminator();
         //When
-        ArrayList<Integer> result = numbers;
-        System.out.println("Testing Empty ArrayList \"numbers\", elements of list: "+result );
+        System.out.println("Testing Empty ArrayList \"numbers\", elements of list: "+numbers );
         ArrayList<Integer> result2 = ext.exterminate(numbers);
         System.out.println("Testing Empty ArrayList \"evenNumbers\", elements of list: "+result2 );
         //Then
@@ -49,8 +48,7 @@ public class CollectionTestSuite {
 
         OddNumbersExterminator ext = new OddNumbersExterminator();
         //When
-        ArrayList<Integer> result = numbers;
-        System.out.println("Testing Normal ArrayList \"numbers\", elements of list: "+result );
+        System.out.println("Testing Normal ArrayList \"numbers\", elements of list: "+numbers );
         ArrayList<Integer> result2 = ext.exterminate(numbers);
         System.out.println("Testing Normal ArrayList \"evenNumbers\", elements of list: "+result2 );
         //Then

@@ -6,7 +6,7 @@ public class OddNumbersExterminator {
 
 
 
-    public Integer exterminate(ArrayList<Integer> numbers){
+    public ArrayList<Integer> exterminate(ArrayList<Integer> numbers){
 
         ArrayList<Integer> evenNumbers = new ArrayList<Integer>();
 
@@ -18,7 +18,7 @@ public class OddNumbersExterminator {
                 evenNumbers.add(numb);
             }
         }
-        return evenNumbers.size();
+        return evenNumbers;
     }
 
 }

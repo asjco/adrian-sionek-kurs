@@ -2,6 +2,7 @@ package com.course.testing.collection;
 
 import org.junit.*;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class CollectionTestSuite {
@@ -29,13 +30,12 @@ public class CollectionTestSuite {
         ArrayList<Integer> numbers = new ArrayList<Integer>();
         OddNumbersExterminator ext = new OddNumbersExterminator();
         //When
-        int result = numbers.size();
-        System.out.println("Testing Empty ArrayList \"numbers\", size of list: "+result );
-        int result2 = ext.exterminate(numbers);
-        System.out.println("Testing Empty ArrayList \"evenNumbers\", size of list: "+result2 );
+        ArrayList<Integer> result = numbers;
+        System.out.println("Testing Empty ArrayList \"numbers\", elements of list: "+result );
+        ArrayList<Integer> result2 = ext.exterminate(numbers);
+        System.out.println("Testing Empty ArrayList \"evenNumbers\", elements of list: "+result2 );
         //Then
-        Assert.assertEquals(0, result);
-        Assert.assertEquals(0, result2);
+        Assert.assertEquals(numbers, result2);
     }
     @Test
     public void testOddNumbersExterminatorNormalList(){
@@ -43,19 +43,21 @@ public class CollectionTestSuite {
         ArrayList<Integer> numbers = new ArrayList<Integer>();
             numbers.add(1);
             numbers.add(1);
-            numbers.add(3);
             numbers.add(4);
             numbers.add(5);
+            numbers.add(6);
 
         OddNumbersExterminator ext = new OddNumbersExterminator();
         //When
-        int result = numbers.size();
-        System.out.println("Testing Normal ArrayList \"numbers\", size of list: "+result );
-        int result2 = ext.exterminate(numbers);
-        System.out.println("Testing Normal ArrayList \"evenNumbers\", size of list: "+result2 );
+        ArrayList<Integer> result = numbers;
+        System.out.println("Testing Normal ArrayList \"numbers\", elements of list: "+result );
+        ArrayList<Integer> result2 = ext.exterminate(numbers);
+        System.out.println("Testing Normal ArrayList \"evenNumbers\", elements of list: "+result2 );
         //Then
-        Assert.assertEquals(5, result);
-        Assert.assertEquals(1, result2);
+            ArrayList<Integer> testList = new ArrayList<Integer>();
+                testList.add(4);
+                testList.add(6);
+        Assert.assertEquals(testList, result2);
     }
 
 }

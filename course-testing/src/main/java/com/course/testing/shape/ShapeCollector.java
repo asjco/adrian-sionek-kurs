@@ -33,9 +33,16 @@ public class ShapeCollector {
         return shape;
     }
 
-    public List<Shape> showFigures() {
+    public String showFigures() {
+        String result = null;
+        for(Shape obj : shapesList){
+           String var1 = obj.getShapeName();
+           String var2 = obj.getField();
 
-        return shapesList;
+            result = var1 + var2;
+        }
+
+        return result;
     }
 
     public int listQuantity() {

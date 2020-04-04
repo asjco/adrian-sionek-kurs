@@ -123,11 +123,10 @@ public class ShapeCollectorTestSuite {
         shapeCollector.addFigure(circle);
 
         //When
-        List<Shape> show = shapeCollector.showFigures();
+        String show = shapeCollector.showFigures();
 
         //Then
-        List<Shape> test = new ArrayList<>();
-        test.add(circle);
+        String test = "Shape - circle "+"Area = 3,14*r^2 ";
 
         Assert.assertEquals(test, show);
     }

@@ -26,14 +26,10 @@ public class BookLibrary {
     }
 
     public List<Book> listBooksInHandsOf(LibraryUser libraryUser){
-        List<Book> bookList = new ArrayList<Book>();
 
         List<Book> resultList = libraryDatabase.listBooksInHandsOf(libraryUser);
-        if(resultList.size()==0){
-            return bookList;
-        }
-        bookList = resultList;
-        return bookList;
+
+        return resultList;
     }
 
 }

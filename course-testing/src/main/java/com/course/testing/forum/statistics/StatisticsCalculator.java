@@ -6,9 +6,9 @@ public class StatisticsCalculator {
      int usersQuantity;
      int postsQuantity;
      int commentsQuantity;
-     int avPostsPerUser;
-     int avCommentsPerUser;
-     int avCommentsPerPost;
+     double avPostsPerUser;
+     double avCommentsPerUser;
+     double avCommentsPerPost;
 
     public StatisticsCalculator(Statistics statistics) {
         this.statistics = statistics;
@@ -16,17 +16,25 @@ public class StatisticsCalculator {
 
     public void calculateAdvStatistics(Statistics statistics){
 
+
         usersQuantity = statistics.usersNames().size();
 
         postsQuantity = statistics.postsCount();
 
         commentsQuantity = statistics.commentsCount();
 
-        avPostsPerUser = statistics.postsCount()/statistics.usersNames().size();
+        if(statistics.usersNames().size() > 0) {
+            avPostsPerUser = 1.0 * statistics.postsCount() / statistics.usersNames().size();
+        }
 
-        avCommentsPerUser = statistics.commentsCount()/statistics.usersNames().size();
+        if(statistics.usersNames().size() > 0) {
+            avCommentsPerUser = 1.0 * statistics.commentsCount() / statistics.usersNames().size();
+        }
 
-        avCommentsPerPost = statistics.commentsCount()/statistics.postsCount();
+        if(statistics.postsCount() > 0) {
+            avCommentsPerPost = 1.0 * statistics.commentsCount() / statistics.postsCount();
+        }
+
     }
 
     public int getUsersQuantity() {
@@ -41,15 +49,15 @@ public class StatisticsCalculator {
         return commentsQuantity;
     }
 
-    public int getAvPostsPerUser() {
+    public double getAvPostsPerUser() {
         return avPostsPerUser;
     }
 
-    public int getAvCommentsPerUser() {
+    public double getAvCommentsPerUser() {
         return avCommentsPerUser;
     }
 
-    public int getAvCommentsPerPost() {
+    public double getAvCommentsPerPost() {
         return avCommentsPerPost;
     }
 

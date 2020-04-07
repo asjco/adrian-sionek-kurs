@@ -1,3 +1,4 @@
 rootProject.name = 'java-course'
 include 'course-testing'
+include 'course stream'
 

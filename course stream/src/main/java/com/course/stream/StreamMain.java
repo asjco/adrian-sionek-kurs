@@ -11,8 +11,8 @@ public class StreamMain {
 
         PoemBeautifier poemBeautifier = new PoemBeautifier();
 
-        poemBeautifier.beautify("example 1", (string -> "ABC " + string + " ABC"));
-        poemBeautifier.beautify("example 2", (string -> string.toUpperCase()));
+        poemBeautifier.beautify("example 1", string -> "ABC " + string + " ABC");
+        poemBeautifier.beautify("example 2", string -> string.toUpperCase());
         poemBeautifier.beautify("example 3", string -> "*** "+string+" ***");
         poemBeautifier.beautify("example 4", string -> "<3 "+string+" <3");
     }

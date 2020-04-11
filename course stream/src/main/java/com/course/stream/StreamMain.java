@@ -1,17 +1,38 @@
 package com.course.stream;
 
-import com.course.stream.beautifier.PoemBeautifier;
-import com.course.stream.iterate.NumbersGenerator;
-import com.course.stream.lambda.*;
-import com.course.stream.reference.FunctionalCalculator;
+import com.course.stream.book.Book;
+import com.course.stream.book.BookDirectory;
+import com.course.stream.forumuser.Forum;
+import com.course.stream.forumuser.ForumUser;
+import com.course.stream.person.People;
+
+import java.time.Clock;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class StreamMain {
 
     public static void main(String[] args){
-        System.out.println("Using stream to generate numbers from 1 to 20 ");
-        NumbersGenerator.generateEven(20);
+
+
+        Forum forum = new Forum();
+        Map<Integer, ForumUser> resultMap = forum.getUserList().stream()
+                .filter(forumUser -> forumUser.getSex()=='M')
+                .filter(forumUser -> forumUser.getBirthDate().isBefore(LocalDate.now().minusYears(20)))
+                .filter(forumUser -> forumUser.getPostsQuantity() >= 1)
+                .collect(Collectors.toMap(ForumUser::getUserId, forumUser -> forumUser));
+
+        resultMap.entrySet().stream()
+                .map(entry -> entry.getKey() +": "+ entry.getValue())
+                .forEach(System.out::println);
+
 
     }
+
 
 
 }

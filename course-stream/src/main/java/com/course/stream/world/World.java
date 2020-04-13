@@ -2,11 +2,13 @@ package com.course.stream.world;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public final class World {
 
-    private final List<Continent> continentList = new ArrayList<>();
+    private final Set<Continent> continentList = new HashSet<>();
 
     public void addContinent(Continent continent) {
         continentList.add(continent);

@@ -7,17 +7,27 @@ public interface ArrayOperations {
 
     static double getAverage(int[] numbers){
 
-        IntStream.range(0, numbers.length)
-                .forEach(value -> System.out.println(numbers[value]));
+        if(numbers.length>0) {
 
-        OptionalDouble avg = IntStream.range(0, numbers.length)
-                .map(n -> numbers[n])
-                .average();
+            System.out.println("Array Elements:");
 
-        double value = avg.getAsDouble();
+            IntStream.range(0, numbers.length)
+                    .forEach(value -> System.out.println(numbers[value]));
 
-        System.out.println("average equals: "+value);
+            OptionalDouble avg = IntStream.range(0, numbers.length)
+                    .map(n -> numbers[n])
+                    .average();
 
-        return value;
+            double value = avg.getAsDouble();
+
+            System.out.println("average equals: " + value);
+
+            return value;
+        }
+        else {
+
+            System.out.println("average equals: " + 0);
+            return 0;
+        }
     }
 }

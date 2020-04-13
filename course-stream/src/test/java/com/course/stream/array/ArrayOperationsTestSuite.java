@@ -1,11 +1,16 @@
 package com.course.stream.array;
 
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
 import java.util.OptionalDouble;
 
 public class ArrayOperationsTestSuite {
+    @Before
+    public void beforeTest(){
+        System.out.println("\nStarting test: ");
+    }
 
     @Test
     public void testGetAverage(){
@@ -37,6 +42,19 @@ public class ArrayOperationsTestSuite {
 
         //Then
         Assert.assertEquals(44.6, result, 0.0001);
+
+    }
+
+    @Test
+    public void testGetAverageEmpty(){
+        //Given
+        int[] numbers = new int[0];
+
+        //When
+        double result = ArrayOperations.getAverage(numbers);
+
+        //Then
+        Assert.assertEquals(0, result, 0.0001);
 
     }
 }

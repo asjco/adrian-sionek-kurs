@@ -7,7 +7,7 @@ public interface ArrayOperations {
 
     static double getAverage(int[] numbers){
 
-        if(numbers.length>0) {
+
 
             System.out.println("Array Elements:");
 
@@ -18,16 +18,11 @@ public interface ArrayOperations {
                     .map(n -> numbers[n])
                     .average();
 
-            double value = avg.getAsDouble();
+            double value = avg.orElse(0);
 
             System.out.println("average equals: " + value);
 
             return value;
-        }
-        else {
 
-            System.out.println("average equals: " + 0);
-            return 0;
-        }
     }
 }

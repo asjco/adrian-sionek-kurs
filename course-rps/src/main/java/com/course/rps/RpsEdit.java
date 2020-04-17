@@ -29,42 +29,6 @@ public class RpsEdit {
                 "button n - restarts the game preceded by a question, \"Are you sure to end actual game ?\"");
     }
 
-    public void startGame() {
-
-        int ppoints = 0;
-        int cpoints = 0;
-
-        boolean end = false;
-        while (!end) {
-
-            System.out.println("Please choose your move...");
-
-            int pmove = scanner.nextInt();
-            int cmove = generator.nextInt(3) + 1;
-
-
-            playerPath(pmove);
-            computerPath(cmove);
-
-            int pp = playerPoints(pmove, cmove);
-            int cp = computerPoints(pmove, cmove);
-
-            //points
-            ppoints = ppoints + pp;
-
-            cpoints = cpoints + cp;
-
-            wonRounds(ppoints, cpoints);
-
-            //end
-            if (ppoints == rounds || cpoints == rounds) {
-                end = true;
-            }
-        }
-        finalScore(ppoints, cpoints);
-
-    }
-
     public int playerPoints(int pmove, int cmove) {
 
         int playerPoints = 0;
@@ -105,7 +69,6 @@ public class RpsEdit {
             System.out.println("Your move - *Scissors*");
         } else {
             System.out.println("Wrong move!!!, choose numbers from 1 to 3");
-            // continue;
         }
     }
 
@@ -145,7 +108,6 @@ public class RpsEdit {
 
     }
 
-
     public void endGame() {
         System.out.println("To quit press *x*,\nTo close actual game and start new round press *n* ");
 
@@ -179,6 +141,44 @@ public class RpsEdit {
                 System.exit(0);
             }
         }
+
+    }
+    public void startGame() {
+
+        int ppoints = 0;
+        int cpoints = 0;
+
+        boolean end = false;
+        while (!end) {
+
+            System.out.println("Please choose your move...");
+
+            int pmove = scanner.nextInt();
+            int cmove = generator.nextInt(3) + 1;
+
+
+            playerPath(pmove);
+            if (pmove!=1 && pmove!=2 && pmove!=3){
+                continue;
+            }
+            computerPath(cmove);
+
+            int pp = playerPoints(pmove, cmove);
+            int cp = computerPoints(pmove, cmove);
+
+            //points
+            ppoints = ppoints + pp;
+
+            cpoints = cpoints + cp;
+
+            wonRounds(ppoints, cpoints);
+
+            //end
+            if (ppoints == rounds || cpoints == rounds) {
+                end = true;
+            }
+        }
+        finalScore(ppoints, cpoints);
 
     }
 

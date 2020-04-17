@@ -13,7 +13,6 @@ public class RpsRunner {
         game.instructions();
         game.startGame();
         game.endGame();
-        game.finalScore();
 
     }
 }

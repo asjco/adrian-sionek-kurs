@@ -8,10 +8,7 @@ public class RpsEdit {
     private final Scanner scanner = new Scanner(System.in);
     private final Random generator = new Random();
     private int rounds;
-    private int move;
-    private int computerMove;
-    private int playerPoints;
-    private int computerPoints;
+
 
     public void inputData() {
 
@@ -29,106 +26,113 @@ public class RpsEdit {
                 "button 2 - plays *Paper*,\n" +
                 "button 3 - plays *Scissors*,\n" +
                 "button x - ends the game preceded by a question, \"Are you sure to end the game ?\"\n" +
-                "button n - restarts the game preceded by a question, \"Are you sure to end actual game ?\"\n");
+                "button n - restarts the game preceded by a question, \"Are you sure to end actual game ?\"");
     }
 
     public void startGame() {
 
-        playerPoints = 0;
-        computerPoints = 0;
-
+        int ppoints = 0;
+        int cpoints = 0;
 
         boolean end = false;
         while (!end) {
 
             System.out.println("Please choose your move...");
 
-            int move = scanner.nextInt();
-            int computerMove = 0;
-
-            //Player moves
-            if (move == 1) {
-                System.out.println("Your move - *Rock*");
-                computerMove = generator.nextInt(3) + 1;
-            } else if (move == 2) {
-                System.out.println("Your move - *Paper*");
-                computerMove = generator.nextInt(3) + 1;
-            } else if (move == 3) {
-                System.out.println("Your move - *Scissors*");
-                computerMove = generator.nextInt(3) + 1;
-            } else {
-                System.out.println("Wrong move!!!, choose numbers from 1 to 3");
-                continue;
-            }
+            int pmove = scanner.nextInt();
+            int cmove = generator.nextInt(3) + 1;
 
 
-            //Computer moves
-            if (computerMove == 1) {
-                System.out.println("Computer move - *Rock*");
-            } else if (computerMove == 2) {
-                System.out.println("Computer move - *Paper*");
-            } else if (computerMove == 3) {
-                System.out.println("Computer move - *Scissors*");
-            }
+            playerPath(pmove);
+            computerPath(cmove);
 
-            //Who is winner ?
-           winRules();
+            int pp = playerPoints(pmove, cmove);
+            int cp = computerPoints(pmove, cmove);
 
-            //Won round
-            if (playerPoints > computerPoints) {
-                System.out.println("Won rounds = " + playerPoints);
-            } else if (playerPoints < computerPoints) {
-                System.out.println("Won rounds = " + computerPoints);
-            } else {
-                System.out.println("Draw for all players with: " + playerPoints + " points");
-            }
+            //points
+            ppoints = ppoints + pp;
+
+            cpoints = cpoints + cp;
+
+            wonRounds(ppoints, cpoints);
 
             //end
-            if (playerPoints == rounds || computerPoints == rounds) {
+            if (ppoints == rounds || cpoints == rounds) {
                 end = true;
             }
         }
-
+        finalScore(ppoints, cpoints);
 
     }
 
-    public void winRules(){
+    public int playerPoints(int pmove, int cmove) {
 
-        if (move == 1 && computerMove == 1) {
-            System.out.println("draw");
-        } else if (move == 1 && computerMove == 2) {
-            computerPoints++;
-            System.out.println("point for computer");
+        int playerPoints = 0;
 
-        } else if (move == 1 && computerMove == 3) {
+        if (pmove == 1 && cmove == 3) {
             playerPoints++;
-            System.out.println("point for player");
-
-        } else if (move == 2 && computerMove == 2) {
-            System.out.println("draw");
-        } else if (move == 2 && computerMove == 1) {
+        } else if (pmove == 2 && cmove == 1) {
             playerPoints++;
-            System.out.println("point for player");
-
-        } else if (move == 2 && computerMove == 3) {
-            computerPoints++;
-            System.out.println("point for computer");
-
-        } else if (move == 3 && computerMove == 3) {
-            System.out.println("draw");
-        } else if (move == 3 && computerMove == 1) {
-            computerPoints++;
-            System.out.println("point for computer");
-
-        } else if (move == 3 && computerMove == 2) {
+        } else if (pmove == 3 && cmove == 2) {
             playerPoints++;
-            System.out.println("point for player");
+        }
+        return playerPoints;
+    }
+
+    public int computerPoints(int pmove, int cmove) {
+
+        int computerPoints = 0;
+
+        if (pmove == 1 && cmove == 2) {
+            computerPoints++;
+
+        } else if (pmove == 2 && cmove == 3) {
+            computerPoints++;
+
+        } else if (pmove == 3 && cmove == 1) {
+            computerPoints++;
 
         }
-
+        return computerPoints;
     }
 
-    public void finalScore(){
+    public void playerPath(int pmove) {
+        if (pmove == 1) {
+            System.out.println("Your move - *Rock*");
+        } else if (pmove == 2) {
+            System.out.println("Your move - *Paper*");
+        } else if (pmove == 3) {
+            System.out.println("Your move - *Scissors*");
+        } else {
+            System.out.println("Wrong move!!!, choose numbers from 1 to 3");
+            // continue;
+        }
+    }
+
+
+    public void computerPath(int cmove) {
+        if (cmove == 1) {
+            System.out.println("Computer move - *Rock*");
+        } else if (cmove == 2) {
+            System.out.println("Computer move - *Paper*");
+        } else if (cmove == 3) {
+            System.out.println("Computer move - *Scissors*");
+        }
+    }
+
+    public void wonRounds(int playerPoints, int computerPoints) {
+
+        if (playerPoints > computerPoints) {
+            System.out.println("Won rounds = " + playerPoints);
+        } else if (playerPoints < computerPoints) {
+            System.out.println("Won rounds = " + computerPoints);
+        } else {
+            System.out.println("Draw for all players with: " + playerPoints + " points");
+        }
+    }
+
+
+    public void finalScore(int playerPoints, int computerPoints) {
 
         //final scores
         System.out.println("Final score: Player = " + playerPoints + " points, Computer = " + computerPoints + " points");

@@ -7,12 +7,12 @@ public class RpsRunner {
 
     public static void main(String[] args) {
 
-        RpsEdit game = new RpsEdit();
+        RpsEdit run = new RpsEdit();
 
-        game.inputData();
-        game.instructions();
-        game.startGame();
-        game.endGame();
+        run.inputData();
+        run.instructions();
+        run.game();
+        run.endGame();
 
     }
 }

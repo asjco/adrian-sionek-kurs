@@ -122,9 +122,11 @@ public class RpsEdit {
                 System.out.println("Thanks for playing");
                 System.exit(0);
             } else {
+                System.out.println("New round");
                 inputData();
                 instructions();
-                startGame();
+                game();
+                endGame();
             }
 
         } else if ("n".equals(dec1)) {
@@ -135,7 +137,7 @@ public class RpsEdit {
                 System.out.println("New round");
                 inputData();
                 instructions();
-                startGame();
+                game();
                 endGame();
             } else {
                 System.exit(0);
@@ -143,7 +145,7 @@ public class RpsEdit {
         }
 
     }
-    public void startGame() {
+    public void game() {
 
         int ppoints = 0;
         int cpoints = 0;

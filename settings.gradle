@@ -2,4 +2,5 @@ rootProject.name = 'java-course'
 include 'course-testing'
 include 'course-stream'
 include 'course-rps'
+include 'course-exception'
 

@@ -145,6 +145,7 @@ public class RpsEdit {
         }
 
     }
+
     public void game() {
 
         int ppoints = 0;
@@ -158,15 +159,25 @@ public class RpsEdit {
             int pmove = scanner.nextInt();
             int cmove = generator.nextInt(3) + 1;
 
-
-            playerPath(pmove);
-            if (pmove!=1 && pmove!=2 && pmove!=3){
+            if (pmove == 1 || pmove == 2 || pmove == 3) {
+                playerPath(pmove);
+            } else {
+                System.out.println("Wrong move, please choose numbers from 1 to 3");
                 continue;
             }
+
             computerPath(cmove);
 
             int pp = playerPoints(pmove, cmove);
             int cp = computerPoints(pmove, cmove);
+
+            if (pp == 1) {
+                System.out.println("Point for player");
+            } else if (cp == 1) {
+                System.out.println("Point for computer");
+            } else if (pp == cp) {
+                System.out.println("Draw");
+            }
 
             //points
             ppoints = ppoints + pp;

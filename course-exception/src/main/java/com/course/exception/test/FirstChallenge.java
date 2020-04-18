@@ -6,29 +6,24 @@ public class FirstChallenge {
         if (b == 0) {
             throw new ArithmeticException();
         }
-
-        try {
-            return a / b;
-
-        } catch (ArithmeticException e) {
-            System.out.println("Oh no, something went wrong " + e);
-            return 0;
-
-        } finally {
-            System.out.println("Denominator used in divide: " + b);
-
-        }
-
-
+        return a / b;
     }
 
     public static void main(String[] args) {
 
         FirstChallenge firstChallenge = new FirstChallenge();
+        double result = 0;
 
-        double result = firstChallenge.divide(3, 0);
+        try {
+            result = firstChallenge.divide(3, 0);
+            System.out.println("Result " + result);
+        } catch (ArithmeticException e) {
+            System.out.println("Oh no, something went wrong " + e);
+            result = 0;
+        } finally {
+            System.out.println("Denominator used in divide: " + result);
 
-        System.out.println(result);
+        }
 
     }
 }

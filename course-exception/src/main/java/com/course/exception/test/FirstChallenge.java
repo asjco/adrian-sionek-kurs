@@ -17,11 +17,12 @@ public class FirstChallenge {
         try {
             result = firstChallenge.divide(3, 0);
             System.out.println("Result " + result);
+
         } catch (ArithmeticException e) {
             System.out.println("Oh no, something went wrong " + e);
-            result = 0;
+
         } finally {
-            System.out.println("Denominator used in divide: " + result);
+            System.out.println("Verification result of divide = " + result);
 
         }
 

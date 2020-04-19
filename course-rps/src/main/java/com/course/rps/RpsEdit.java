@@ -1,5 +1,6 @@
 package com.course.rps;
 
+import java.util.InputMismatchException;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -10,13 +11,15 @@ public class RpsEdit {
     private int rounds;
 
 
-    public void inputData() {
+    public void inputData() throws InputMismatchException {
 
         System.out.println("What's your name ?");
         String playerName = scanner.nextLine();
         System.out.println("Welcome in game " + "*" + playerName + "*" + "\nPlease tell me, how many rounds you want to win ???");
         rounds = scanner.nextInt();
-        System.out.println("Ok, you must win " + rounds + " rounds\n");
+        if (rounds > 0) {
+            System.out.println("Ok, you must win " + rounds + " rounds\n");
+        }
 
     }
 
@@ -108,7 +111,7 @@ public class RpsEdit {
 
     }
 
-    public void endGame() {
+    public void endGame() throws InputMismatchException {
         System.out.println("To quit press *x*,\nTo close actual game and start new round press *n* ");
 
         scanner.nextLine();
@@ -146,7 +149,7 @@ public class RpsEdit {
 
     }
 
-    public void game() {
+    public void game() throws InputMismatchException {
 
         int ppoints = 0;
         int cpoints = 0;

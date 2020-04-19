@@ -1,7 +1,6 @@
 package com.course.rps;
 
-import java.util.Random;
-import java.util.Scanner;
+import java.util.InputMismatchException;
 
 public class RpsRunner {
 
@@ -9,10 +8,26 @@ public class RpsRunner {
 
         RpsEdit run = new RpsEdit();
 
-        run.inputData();
+        try {
+            run.inputData();
+        } catch (InputMismatchException e) {
+            System.out.println("Wrong rounds quantity " + e);
+        }
+
         run.instructions();
-        run.game();
-        run.endGame();
+
+        try {
+            run.game();
+        } catch (InputMismatchException e) {
+            System.out.println("Wrong player move " + e);
+        }
+
+        try {
+            run.endGame();
+        } catch (InputMismatchException e) {
+            System.out.println("Something went wrong " + e);
+        }
+
 
     }
 }

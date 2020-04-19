@@ -153,7 +153,7 @@ public class RpsCheat {
         //if probability >0 && <=25 - computer lose
         //if probability >25 && <=50 - draw
         //if probability >50 && <=100 - computer win
-        int probability = generator.nextInt(101);
+        int probability = generator.nextInt(100)+1;
         int computerMove = 0;
         if (pmove == 1) {
 

@@ -6,7 +6,7 @@ public class RpsRunner {
 
     public static void main(String[] args) {
 
-        RpsEdit run = new RpsEdit();
+        RpsCheat run = new RpsCheat();
 
         try {
             run.inputData();

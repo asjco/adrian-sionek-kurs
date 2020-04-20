@@ -4,6 +4,8 @@ import java.util.InputMismatchException;
 import java.util.Random;
 import java.util.Scanner;
 
+import static java.lang.Integer.parseInt;
+
 public class RpsEdit {
 
     private final Scanner scanner = new Scanner(System.in);
@@ -14,13 +16,10 @@ public class RpsEdit {
     public void inputData() throws InputMismatchException {
 
         System.out.println("What's your name ?");
-        String playerName = scanner.nextLine();
-        System.out.println("Welcome in game " + "*" + playerName + "*" + "\nPlease tell me, how many rounds you want to win ???");
-        rounds = scanner.nextInt();
-        if (rounds > 0) {
-            System.out.println("Ok, you must win " + rounds + " rounds\n");
-        }
-
+        String playerName = validName();
+        System.out.println("Welcome in game " + "*" + playerName + "*" + "\nPlease tell me, how many rounds you want to win (max 999)???");
+        rounds = roundsValidQuantity();
+        System.out.println("Ok, you must win " + rounds + " rounds");
     }
 
     public void instructions() {
@@ -75,7 +74,6 @@ public class RpsEdit {
         }
     }
 
-
     public void computerPath(int cmove) {
         if (cmove == 1) {
             System.out.println("Computer move - *Rock*");
@@ -87,7 +85,6 @@ public class RpsEdit {
     }
 
     public void wonRounds(int playerPoints, int computerPoints) {
-
         if (playerPoints > computerPoints) {
             System.out.println("Won rounds = " + playerPoints);
         } else if (playerPoints < computerPoints) {
@@ -97,9 +94,7 @@ public class RpsEdit {
         }
     }
 
-
     public void finalScore(int playerPoints, int computerPoints) {
-
         //final scores
         System.out.println("Final score: Player = " + playerPoints + " points, Computer = " + computerPoints + " points");
 
@@ -108,13 +103,10 @@ public class RpsEdit {
         } else if (playerPoints < computerPoints) {
             System.out.println("The winner is Computer with " + computerPoints + " points");
         }
-
     }
 
     public void endGame() throws InputMismatchException {
         System.out.println("To quit press *x*,\nTo close actual game and start new round press *n* ");
-
-        scanner.nextLine();
         String dec1 = scanner.nextLine();
 
         System.out.println(dec1);
@@ -134,8 +126,8 @@ public class RpsEdit {
 
         } else if ("n".equals(dec1)) {
             System.out.println("Are you sure to close actual game, and start the new round ?");
-
             String dec2 = scanner.nextLine();
+
             if ("".equals(dec2)) {
                 System.out.println("New round");
                 inputData();
@@ -146,10 +138,38 @@ public class RpsEdit {
                 System.exit(0);
             }
         }
-
     }
 
-    public void game() throws InputMismatchException {
+    public String validName() {
+        String scan = scanner.nextLine();
+        while (!scan.chars().allMatch(Character::isLetter) || scan.length() > 15 || scan.length() < 2 || scan == null) {
+            System.out.println("Really ? please tell me your real name...");
+            scan = scanner.nextLine();
+        }
+        return scan;
+    }
+
+    public int roundsValidQuantity() {
+        String scan = scanner.nextLine();
+        while (!scan.chars().allMatch(Character::isDigit) || scan.length() > 3 || scan.length() < 1 || "0".equals(scan)) {
+            System.out.println("wrong rounds quantity, try again");
+            scan = scanner.nextLine();
+        }
+        String result = scan;
+        return parseInt(result);
+    }
+
+    public int playerValidMove() {
+        String scan = scanner.nextLine();
+        while (!"1".equals(scan) && !"2".equals(scan) && !"3".equals(scan)) {
+            System.out.println("wrong move, try again");
+            scan = scanner.nextLine();
+        }
+        String result = scan;
+        return parseInt(result);
+    }
+
+    public void game() {
 
         int ppoints = 0;
         int cpoints = 0;
@@ -159,16 +179,10 @@ public class RpsEdit {
 
             System.out.println("Please choose your move...");
 
-            int pmove = scanner.nextInt();
+            int pmove = playerValidMove();
+            playerPath(pmove);
+
             int cmove = generator.nextInt(3) + 1;
-
-            if (pmove == 1 || pmove == 2 || pmove == 3) {
-                playerPath(pmove);
-            } else {
-                System.out.println("Wrong move, please choose numbers from 1 to 3");
-                continue;
-            }
-
             computerPath(cmove);
 
             int pp = playerPoints(pmove, cmove);
@@ -195,7 +209,5 @@ public class RpsEdit {
             }
         }
         finalScore(ppoints, cpoints);
-
     }
-
 }

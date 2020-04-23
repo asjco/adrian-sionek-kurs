@@ -3,4 +3,5 @@ include 'course-testing'
 include 'course-stream'
 include 'course-rps'
 include 'course-exception'
+include 'course-good-patterns'
 

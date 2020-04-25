@@ -1,4 +1,4 @@
-package com.course.good.patterns.challenges;
+package com.course.good.patterns.challenges.challenge;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -32,8 +32,8 @@ public final class MovieStore {
 
     public String getTitles() {
 
-        return getMovies().entrySet().stream()
-                .flatMap(l -> l.getValue().stream())
+        return getMovies().values().stream()
+                .flatMap(v -> v.stream())
                 .map(t -> t + " ! ")
                 .collect(Collectors.joining());
 

@@ -1,4 +1,4 @@
-package com.course.good.patterns.challenges;
+package com.course.good.patterns.challenges.challenge;
 
 public class MovieStoreMain {
     public static void main(String[] args) {

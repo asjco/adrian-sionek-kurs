@@ -19,10 +19,9 @@ public class OrderProcessor {
             informationService.inform(orderRequest.getUser());
 
             orderRepository.createOrder(orderRequest.getUser(), orderRequest.getProductName(), orderRequest.getProductQuantity());
-            return new OrderDto(orderRequest.getUser(), true);
 
+            return new OrderDto(orderRequest.getUser(), true);
         } else {
-            System.out.println("Not Ordered");
             return new OrderDto(orderRequest.getUser(), false);
         }
     }

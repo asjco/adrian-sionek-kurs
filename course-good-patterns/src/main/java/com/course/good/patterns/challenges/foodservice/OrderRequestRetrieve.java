@@ -3,10 +3,9 @@ package com.course.good.patterns.challenges.foodservice;
 public class OrderRequestRetrieve {
 
     public OrderRequest retrieve() {
-        ShopId shopId = new ShopId("Extra Food Shop", "7821230987");
-        String product = "sausage";
+        String product = "soy milk";
         int quantity = 12;
 
-        return new OrderRequest(shopId, product, quantity);
+        return new OrderRequest(product, quantity);
     }
 }

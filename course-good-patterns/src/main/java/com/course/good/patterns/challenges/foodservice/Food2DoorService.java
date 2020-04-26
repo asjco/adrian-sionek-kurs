@@ -5,7 +5,8 @@ public class Food2DoorService {
         OrderRequestRetrieve orderRequestRetrieve = new OrderRequestRetrieve();
         OrderRequest orderRequest = orderRequestRetrieve.retrieve();
 
-        OrderProcessor orderProcessor = new OrderProcessor(new ExtraFoodShop(), new ShopOrderRepository());
+        ShopAssembly shopAssembly = new ShopAssembly();
+        OrderProcessor orderProcessor = new OrderProcessor(shopAssembly.shopAssembler(orderRequest), new ShopOrderRepository());
         orderProcessor.orderProcess(orderRequest);
     }
 }

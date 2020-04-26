@@ -15,11 +15,11 @@ public class OrderProcessor {
         boolean isOrdered = shop.process(orderRequest.getProductName(), orderRequest.getProductQuantity());
 
         if (isOrdered) {
-            orderRepository.createOrder(orderRequest.getShopId(), orderRequest.getProductName(), orderRequest.getProductQuantity());
+            orderRepository.createOrder(shop.getShop(), orderRequest.getProductName(), orderRequest.getProductQuantity());
 
-            return new ShopOrderDto(orderRequest.getShopId(), true);
+            return new ShopOrderDto(shop.getShop(), true);
         } else {
-            return new ShopOrderDto(orderRequest.getShopId(), false);
+            return new ShopOrderDto(shop.getShop(), false);
         }
     }
 }

@@ -3,9 +3,10 @@ package com.course.good.patterns.challenges.flightservice;
 public class FindConditionsRetrieve {
 
     public FindConditions getConditions(){
-        String airport = "Warsaw";
-        FindFrom findFrom = new FindFrom();
+        String departureAirport = "Warsaw";
+        String arrivalsAirport = "Poznan";
+        Finder find = new FindThrough();
 
-        return new FindConditions(airport, findFrom);
+        return new FindConditions(departureAirport, arrivalsAirport, find);
     }
 }

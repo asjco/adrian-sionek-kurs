@@ -1,34 +1,25 @@
 package com.course.good.patterns.challenges.flightservice;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.HashSet;
+import java.util.Set;
 
 public class FlightList {
 
-    private Map<String, List<String>> flightMap = new HashMap<>();
+    private Set<Flight> flightSet = new HashSet<>();
 
     public FlightList() {
-        flightMap.put("1", new Flight1().airportsList());
+        flightSet.add(new Flight("Warsaw", "Poznan"));
+        flightSet.add(new Flight("Krakow", "Warsaw"));
+        flightSet.add(new Flight("Warsaw", "Krakow"));
+        flightSet.add(new Flight("Krakow", "Poznan"));
+        flightSet.add(new Flight("Krakow", "Gdansk"));
+        flightSet.add(new Flight("Gdansk", "Poznan"));
 
     }
 
-    public Map<String, List<String>> getFlightMap() {
-        return flightMap;
+    public Set<Flight> getFlightSet() {
+        return flightSet;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
 
-        FlightList that = (FlightList) o;
-
-        return flightMap.equals(that.flightMap);
-    }
-
-    @Override
-    public int hashCode() {
-        return flightMap.hashCode();
-    }
 }

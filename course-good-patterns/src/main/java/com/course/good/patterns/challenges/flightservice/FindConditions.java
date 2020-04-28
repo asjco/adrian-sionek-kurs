@@ -2,16 +2,22 @@ package com.course.good.patterns.challenges.flightservice;
 
 public class FindConditions {
 
-    private String airport;
+    private String depAirport;
+    private String arrAirport;
     private Finder finder;
 
-    public FindConditions(String airport, Finder finder) {
-        this.airport = airport;
+    public FindConditions(String depAirport, String arrAirport, Finder finder) {
+        this.depAirport = depAirport;
+        this.arrAirport = arrAirport;
         this.finder = finder;
     }
 
-    public String getAirport() {
-        return airport;
+    public String getDepAirport() {
+        return depAirport;
+    }
+
+    public String getArrAirport() {
+        return arrAirport;
     }
 
     public Finder getFinder() {

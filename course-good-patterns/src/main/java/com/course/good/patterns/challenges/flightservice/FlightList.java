@@ -14,7 +14,9 @@ public class FlightList {
         flightSet.add(new Flight("Krakow", "Poznan"));
         flightSet.add(new Flight("Krakow", "Gdansk"));
         flightSet.add(new Flight("Gdansk", "Poznan"));
-
+        flightSet.add(new Flight("Lublin", "Poznan"));
+        flightSet.add(new Flight("Lublin", "Poznan"));
+        flightSet.add(new Flight("Warsaw", "Lublin"));
     }
 
     public Set<Flight> getFlightSet() {

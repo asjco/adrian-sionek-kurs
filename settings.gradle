@@ -6,4 +6,5 @@ include 'course-exception'
 include 'course-good-patterns'
 include 'course-spring-intro'
 include 'course-spring'
+include 'course-patterns'
 

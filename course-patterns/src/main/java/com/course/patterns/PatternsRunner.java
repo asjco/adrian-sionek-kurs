@@ -1,0 +1,7 @@
+package com.course.patterns;
+
+public class PatternsRunner {
+    public static void main(String[] args) {
+        System.out.println("Welcome in module 11");
+    }
+}

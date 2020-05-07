@@ -9,7 +9,7 @@ public class TaskFactory {
     public final Task makeTask(final String taskName) {
         switch (taskName) {
             case SHOPPING:
-                return new ShoppingTask("Shopping", "computer graphic card", 2.0);
+                return new ShoppingTask(null, "computer graphic card", 2.0);
             case PAINTING:
                 return new PaintingTask("Painting", "black", "it");
             case DRIVING:

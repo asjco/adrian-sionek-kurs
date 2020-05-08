@@ -3,8 +3,6 @@ package com.course.patterns.builder.bigmac;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.util.Arrays;
-
 public class BigmacTestSuite {
 
     @Test
@@ -16,7 +14,7 @@ public class BigmacTestSuite {
                 .burgers(3)
                 .ingredients("bacon")
                 .ingredients("lettuce")
-                .ingredients("shrimp")
+                .ingredients("shrimps")
                 .build();
         System.out.println(bigmac);
         //When

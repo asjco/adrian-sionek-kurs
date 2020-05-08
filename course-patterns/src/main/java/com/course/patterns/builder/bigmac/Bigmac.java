@@ -51,41 +51,48 @@ public class Bigmac {
         private static List<String> ingredients = new ArrayList<>();
 
         public BigmacBuilder bun(String bun) {
-            this.bun = bun;
-            return this;
-        }
-
-        public BigmacBuilder burgers(int burgers) {
-            this.burgers = burgers;
-            return this;
-        }
-
-        public BigmacBuilder sauce(String sauce) {
-            this.sauce = sauce;
-            return this;
-        }
-
-        public BigmacBuilder ingredients(String ingredient) {
-            ingredients.add(ingredient);
-            return this;
-        }
-
-        public Bigmac build() {
-            if (!(bun.equals("normal") || bun.equals("sesame"))) {
+            if (!("normal".equals(bun) || "sesame".equals(bun))) {
                 throw new IllegalStateException("bun must be normal or sesame");
-            } else if (!(burgers > 0 && burgers < 4)) {
-                throw new IllegalStateException("burgers must be 1 , 2 or 3 ");
-            } else if (!(sauce.equals("standard") || sauce.equals("1000 islands") || sauce.equals("barbecue"))) {
-                throw new IllegalStateException("sauce must be standard, 1000 islands or barbecue ");
-            } else if (!(ingredients.contains("lettuce") || ingredients.contains("onion") || ingredients.contains("bacon")
-                    || ingredients.contains("cucumber") || ingredients.contains("chilli") || ingredients.contains("mushrooms")
-                    || ingredients.contains("shrimps") || ingredients.contains("cheese"))) {
-                throw new IllegalStateException("ingredients must be lettuce, onion, bacon, cucumber, chilli, mushrooms, shrimps or cheese ");
             } else {
-                return new Bigmac(bun, burgers, sauce, ingredients);
+                this.bun = bun;
+                return this;
             }
         }
 
+        public BigmacBuilder burgers(int burgers) {
+            if (!(burgers > 0 && burgers < 4)) {
+                throw new IllegalStateException("burgers must be 1 , 2 or 3 ");
+            } else {
+                this.burgers = burgers;
+                return this;
+            }
+        }
 
+        public BigmacBuilder sauce(String sauce) {
+            if (!("standard".equals(sauce) || "1000 islands".equals(sauce) || "barbecue".equals(sauce))) {
+                throw new IllegalStateException("sauce must be standard, 1000 islands or barbecue ");
+            } else {
+                this.sauce = sauce;
+                return this;
+            }
+        }
+
+        public BigmacBuilder ingredients(String ingredient) {
+            if (!("lettuce".equals(ingredient) || "onion".equals(ingredient) || "bacon".equals(ingredient)
+                    || "cucumber".equals(ingredient) || "chilli".equals(ingredient) || "mushrooms".equals(ingredient)
+                    || "shrimps".equals(ingredient) || "cheese".equals(ingredient))) {
+                throw new IllegalStateException("ingredients must be lettuce, onion, bacon, cucumber, chilli, mushrooms, shrimps or cheese ");
+
+            } else {
+                ingredients.add(ingredient);
+                return this;
+            }
+        }
+
+        public Bigmac build() {
+            return new Bigmac(bun, burgers, sauce, ingredients);
+        }
     }
+
 }
+

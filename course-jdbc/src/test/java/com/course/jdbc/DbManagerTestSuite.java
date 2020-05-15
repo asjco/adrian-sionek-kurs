@@ -44,8 +44,8 @@ public class DbManagerTestSuite {
     }
 
     @Test
-    public void testSelectUsersAndPosts() throws SQLException{
-//Given
+    public void testSelectUsersAndPosts() throws SQLException {
+        //Given
         DbManager dbManager = DbManager.getInstance();
 
         //When
@@ -59,12 +59,11 @@ public class DbManagerTestSuite {
 
         //Then
         int counter = 0;
-        while (rs.next()){
-            System.out.println(rs.getString("FIRSTNAME")+", "+rs.getString("LASTNAME"));
+        while (rs.next()) {
+            System.out.println(rs.getString("FIRSTNAME") + ", " + rs.getString("LASTNAME"));
             counter++;
         }
         Assert.assertEquals(1, counter);
-
 
 
     }

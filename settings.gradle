@@ -7,4 +7,5 @@ include 'course-good-patterns'
 include 'course-spring-intro'
 include 'course-spring'
 include 'course-patterns'
+include 'course-jdbc'
 

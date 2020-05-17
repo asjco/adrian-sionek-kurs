@@ -8,4 +8,5 @@ include 'course-spring-intro'
 include 'course-spring'
 include 'course-patterns'
 include 'course-jdbc'
+include 'course-sudoku'
 

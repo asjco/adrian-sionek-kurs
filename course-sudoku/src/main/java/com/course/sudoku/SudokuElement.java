@@ -32,4 +32,9 @@ public class SudokuElement {
         capabilities.remove(index);
     }
 
+    @Override
+    public String toString() {
+        return ""+value;
+
+    }
 }

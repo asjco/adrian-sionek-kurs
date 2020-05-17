@@ -6,6 +6,7 @@ import java.util.Scanner;
 
 public class SudokuBoard extends Prototype {
 
+    SudokuElement sudokuElement;
     Scanner scanner = new Scanner(System.in);
     NumbersValidator numbersValidator = new NumbersValidator();
     public static final int SIZE = 9;
@@ -52,7 +53,7 @@ public class SudokuBoard extends Prototype {
         for(SudokuRow row : sudokuBoard) {
             SudokuRow clonedRow = new SudokuRow();
             for(SudokuElement element : row.getSudokuRow()) {
-                clonedRow.getSudokuRow().add(element);
+                clonedRow.getSudokuRow().add(new SudokuElement(element.getValue()));
             }
             clonedBoard.getSudokuBoard().add(clonedRow);
         }
@@ -75,4 +76,6 @@ public class SudokuBoard extends Prototype {
         }
         return result;
     }
+
+
 }

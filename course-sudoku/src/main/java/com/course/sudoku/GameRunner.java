@@ -1,9 +1,12 @@
 package com.course.sudoku;
 
+import java.util.List;
+
 public class GameRunner {
     public static void main(String[] args) {
 
         SudokuBoard sudokuBoard = new SudokuBoard();
+        Solver solver = new Solver();
         sudokuBoard.createBoard();
         System.out.println(sudokuBoard);
 
@@ -15,8 +18,9 @@ public class GameRunner {
         }
 
         sudokuBoard.setElement();
-
-        System.out.println(deepCloned);
+        solver.solver(sudokuBoard);
+        System.out.println(sudokuBoard);
+        System.out.println(solver.loopCounter);
 
 
     }

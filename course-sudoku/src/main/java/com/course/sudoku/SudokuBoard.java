@@ -6,7 +6,6 @@ import java.util.Scanner;
 
 public class SudokuBoard extends Prototype {
 
-    SudokuElement sudokuElement;
     Scanner scanner = new Scanner(System.in);
     NumbersValidator numbersValidator = new NumbersValidator();
     public static final int SIZE = 9;
@@ -32,15 +31,17 @@ public class SudokuBoard extends Prototype {
 
     public void setElement() {
         boolean end = false;
-        System.out.println(sudokuBoard);
-        getSudokuBoard().get(numbersValidator.scanRow() - 1).getSudokuRow().get(numbersValidator.scanColumn() - 1).setValue(numbersValidator.scanValue());
-        System.out.println(sudokuBoard);
+        System.out.println(this.toString());
+        numbersValidator.scanParameters();
+        getSudokuBoard().get(numbersValidator.getRow() - 1).getSudokuRow().get(numbersValidator.getColumn() - 1).setValue(numbersValidator.getValue());
+        System.out.println(this.toString());
         while (!end) {
             System.out.println("If you want to set more numbers, put 'enter'");
             String scan = scanner.nextLine();
             if ("".equals(scan)) {
-                getSudokuBoard().get(numbersValidator.scanRow() - 1).getSudokuRow().get(numbersValidator.scanColumn() - 1).setValue(numbersValidator.scanValue());
-                System.out.println(sudokuBoard);
+                numbersValidator.scanParameters();
+                getSudokuBoard().get(numbersValidator.getRow() - 1).getSudokuRow().get(numbersValidator.getColumn() - 1).setValue(numbersValidator.getValue());
+                System.out.println(this.toString());
             } else {
                 end = true;
             }

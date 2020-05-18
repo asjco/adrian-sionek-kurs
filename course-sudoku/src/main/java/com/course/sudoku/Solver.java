@@ -8,10 +8,6 @@ public class Solver {
     public int loopCounter;
     private List<Integer> capabilities = new ArrayList<>();
 
-    public Solver() {
-        for (int i = 0; i < 9; i++)
-            capabilities.add(i, i + 1);
-    }
 
     public boolean isInRow(int row, int number, SudokuBoard sudokuBoard) {
         boolean result = false;

@@ -54,32 +54,93 @@ public class Solver {
         return !isInRow(row, number, sudokuBoard) && !isInColumn(column, number, sudokuBoard) && !isInSection(row, column, number, sudokuBoard);
     }
 
-
-    public void solver(SudokuBoard sudokuBoard) {
+/*
+    public boolean solver(SudokuBoard sudokuBoard) {
+        int row = -1;
+        int col = -1;
+        boolean isNotEmpty = true;
         loopCounter = 0;
-        for (int row = 0; row < sudokuBoard.SIZE; row++) {
-            for (int column = 0; column < sudokuBoard.SIZE; column++) {
-                if (sudokuBoard.getSudokuBoard().get(row).getSudokuRow().get(column).getValue() == SudokuElement.EMPTY) {
-                    for (int number = 1; number <= 9; number++) {
-                        if (!(isOk(row, column, number, sudokuBoard))) {
-                            sudokuBoard.getSudokuBoard().get(row).getSudokuRow().get(column).removeCapabilitiy(number - 1);
-                            if (sudokuBoard.getSudokuBoard().get(row).getSudokuRow().get(column).getCapabilities().size() == 1) {
-                                sudokuBoard.getSudokuBoard().get(row).getSudokuRow().get(column).
-                                        setValue(sudokuBoard.getSudokuBoard().get(row).getSudokuRow().get(column).getCapabilities().get(0));
-                            }
-                        } else if ((isOk(row, column, number, sudokuBoard) && !(sudokuBoard.getSudokuBoard().get(row).getSudokuRow().get(column).getCapabilities().size() == 1))) {
-                            sudokuBoard.getSudokuBoard().get(row).getSudokuRow().get(column).setValue(number);
-                        } else if (!(isOk(row, column, number, sudokuBoard)) && sudokuBoard.getSudokuBoard().get(row).getSudokuRow().get(column).getCapabilities().size() == 1) {
-                            System.out.println("Error");
-                        }
-                    }
 
+        for (int i = 0; i < sudokuBoard.SIZE; i++) {
+            for (int j = 0; j < sudokuBoard.SIZE; j++) {
+                if (sudokuBoard.getSudokuBoard().get(i).getSudokuRow().get(j).getValue() == SudokuElement.EMPTY) {
+                    row = i;
+                    col = j;
+
+                    isNotEmpty = false;
+                    break;
+                }
+            }
+            if (!isNotEmpty) {
+                break;
+            }
+        }
+
+        // no empty space left
+        if (isNotEmpty) {
+            return true;
+        }
+
+
+        for (int number = 1; number <= sudokuBoard.getSudokuBoard().get(row).getSudokuRow().get(col).getCapabilities().size(); number++) {
+            if (!(isOk(row, col, number, sudokuBoard))) {
+                sudokuBoard.getSudokuBoard().get(row).getSudokuRow().get(col).removeCapabilitiy(number - 1);
+                if (sudokuBoard.getSudokuBoard().get(row).getSudokuRow().get(col).getCapabilities().size() == 1) {
+                    sudokuBoard.getSudokuBoard().get(row).getSudokuRow().get(col).
+                            setValue(number);
+                    if (solver(sudokuBoard)) {
+                        return true;
+                    }
+                }
+            } else if ((isOk(row, col, number, sudokuBoard) && !(sudokuBoard.getSudokuBoard().get(row).getSudokuRow().get(col).getCapabilities().size() == 1))) {
+                sudokuBoard.getSudokuBoard().get(row).getSudokuRow().get(col).setValue(number);
+                if (solver(sudokuBoard)) {
+                    return true;
                 }
 
+            } else if (!(isOk(row, col, number, sudokuBoard)) && sudokuBoard.getSudokuBoard().get(row).getSudokuRow().get(col).getCapabilities().size() == 1) {
+                System.out.println("Error");
             }
-            loopCounter++;
         }
+        return false;
+    }*/
+
+
+    public boolean solver2(SudokuBoard sudokuBoard) {
+        int row = -1;
+        int col = -1;
+        boolean isNotEmpty = true;
+        loopCounter = 0;
+
+        for (int i = 0; i < sudokuBoard.SIZE; i++) {
+            loopCounter++;
+            for (int j = 0; j < sudokuBoard.SIZE; j++) {
+                if (sudokuBoard.getSudokuBoard().get(i).getSudokuRow().get(j).getValue() == SudokuElement.EMPTY) {
+                    row = i;
+                    col = j;
+
+                    isNotEmpty = false;
+                    break;
+                }
+            }
+            if (!isNotEmpty) {
+                break;
+            }
+        }
+        if (isNotEmpty) {
+            return true;
+        }
+
+        for (int number = 1; number <= 9; number++) {
+            if (isOk(row, col, number, sudokuBoard)) {
+                sudokuBoard.getSudokuBoard().get(row).getSudokuRow().get(col).setValue(number);
+                if (solver2(sudokuBoard)) {
+                    return true;
+                } else {
+                    sudokuBoard.getSudokuBoard().get(row).getSudokuRow().get(col).setValue(SudokuElement.EMPTY);
+                }
+            }
+        }
+        return false;
     }
-
-
 }

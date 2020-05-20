@@ -10,17 +10,11 @@ public class GameRunner {
         sudokuBoard.createBoard();
         System.out.println(sudokuBoard);
 
-        SudokuBoard deepCloned = null;
-        try {
-            deepCloned = sudokuBoard.deepCopy();
-        } catch (CloneNotSupportedException e) {
-            System.out.println(e);
-        }
 
         sudokuBoard.setElement();
-        solver.solver(sudokuBoard);
+        solver.solver2(sudokuBoard);
         System.out.println(sudokuBoard);
-        System.out.println(solver.loopCounter);
+        System.out.println("main loops: " + solver.loopCounter);
 
 
     }

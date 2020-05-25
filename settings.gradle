@@ -9,4 +9,5 @@ include 'course-spring'
 include 'course-patterns'
 include 'course-jdbc'
 include 'course-sudoku'
+include 'course-hibernate'
 

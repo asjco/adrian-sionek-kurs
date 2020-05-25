@@ -1,7 +1,5 @@
 package com.course.sudoku;
 
-import java.util.List;
-
 public class GameRunner {
     public static void main(String[] args) {
 
@@ -12,7 +10,7 @@ public class GameRunner {
 
 
         sudokuBoard.setElement();
-        solver.solver2(sudokuBoard);
+        solver.solver(sudokuBoard);
         System.out.println(sudokuBoard);
         System.out.println("main loops: " + solver.loopCounter);
 

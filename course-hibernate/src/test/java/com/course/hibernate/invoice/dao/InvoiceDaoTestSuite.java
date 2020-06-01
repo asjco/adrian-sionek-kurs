@@ -3,6 +3,7 @@ package com.course.hibernate.invoice.dao;
 import com.course.hibernate.invoice.Invoice;
 import com.course.hibernate.invoice.Item;
 import com.course.hibernate.invoice.Product;
+import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -10,7 +11,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import javax.persistence.Table;
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest

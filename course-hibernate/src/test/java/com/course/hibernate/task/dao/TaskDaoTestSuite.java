@@ -3,6 +3,8 @@ package com.course.hibernate.task.dao;
 
 import com.course.hibernate.task.Task;
 import com.course.hibernate.task.TaskFinancialDetails;
+import com.course.hibernate.tasklist.TaskList;
+import com.course.hibernate.tasklist.dao.TaskListDao;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -20,6 +22,8 @@ public class TaskDaoTestSuite {
 
     @Autowired
     private TaskDao taskDao;
+    @Autowired
+    TaskListDao taskListDao;
     private static final String DESCRIPTION = "Test: Learn Hibernate";
 
 
@@ -76,6 +80,7 @@ public class TaskDaoTestSuite {
         //CleanUp
         taskDao.deleteById(id);
     }
+
 
 
 
